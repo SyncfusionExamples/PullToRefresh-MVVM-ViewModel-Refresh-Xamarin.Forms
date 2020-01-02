@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:syncfusion="clr-namespace:Syncfusion.SfPullToRefresh.XForms;assembly=Syncfusion.SfPullToRefresh.XForms"
+             xmlns:local="clr-namespace:PullToRefresh_MVVM"
+             mc:Ignorable="d"
+             x:Class="PullToRefresh_MVVM.MainPage">
+    <ContentPage.BindingContext>
+        <local:ViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <syncfusion:SfPullToRefresh x:Name="pullToRefresh"
+                                    IsRefreshing="{Binding IsRefreshing}" 
+                                    PullingThreshold="100"
+                                    RefreshContentHeight="30"
+                                    RefreshContentThreshold="30"
+                                    RefreshContentWidth="30"
+                                    RefreshCommand="{Binding RefreshCommand}">
+            <syncfusion:SfPullToRefresh.PullableContent>
+                <StackLayout BackgroundColor="#00AFF9" Orientation="Vertical">
+                    <Label Text="New York Temperature" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" Margin="20"/>
+                    <Image WidthRequest="100" HorizontalOptions="Center" HeightRequest="100"  Margin="20" Source="warmselected.png"/>
+                    <Label Text="{Binding Temperature}" FontSize="Large" TextColor="White" HorizontalTextAlignment="Center" Margin="20" HeightRequest="100"/>
+                </StackLayout>
+            </syncfusion:SfPullToRefresh.PullableContent>
+        </syncfusion:SfPullToRefresh>
+    </ContentPage.Content>
+</ContentPage>
